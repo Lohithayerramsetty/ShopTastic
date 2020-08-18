@@ -1,2 +1,2 @@
 # ShopTastic
-OnlineClothingStore
+OnlineClothingStore - starting git with this project
