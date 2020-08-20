@@ -26,5 +26,10 @@ namespace ShopTastic.WebUI.Controllers
 
             return View();
         }
+        public ActionResult Help()
+        {
+            ViewBag.Message = "This is the help page.";
+            return View();
+        }
     }
 }
