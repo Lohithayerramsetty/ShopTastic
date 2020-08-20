@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ShopTastic.Core.Models;
+using ShopTastic.Core.ViewModels;
 using ShopTastic.DataAccess.InMemory;
 
 namespace ShopTastic.WebUI.Controllers
@@ -12,9 +13,11 @@ namespace ShopTastic.WebUI.Controllers
     {
         // GET: ProductManager
         ProductRepository context;
+        ProductCategoryRepository productCategories;
         public ProductManagerController()
         {
             context = new ProductRepository();
+            productCategories = new ProductCategoryRepository();
         }
         
         public ActionResult Index()
@@ -22,11 +25,13 @@ namespace ShopTastic.WebUI.Controllers
             List<Product> products = context.Collection().ToList();
             return View(products);
         }
-
         public ActionResult Create()
         {
-            Product product = new Product();
-            return View(product);
+            ProductManagerViewModel viewModel = new ProductManagerViewModel();
+
+            viewModel.Product = new Product();
+            viewModel.ProductCategories = productCategories.Collection();
+            return View(viewModel);
         }
         [HttpPost]
         public ActionResult Create(Product product)
@@ -51,7 +56,10 @@ namespace ShopTastic.WebUI.Controllers
             }
             else
             {
-                return View(product);
+                ProductManagerViewModel viewModel = new ProductManagerViewModel();
+                viewModel.Product = product;
+                viewModel.ProductCategories = productCategories.Collection();
+                return View(viewModel);
             }
         }
         [HttpPost]

@@ -7,6 +7,8 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+
+
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -19,46 +21,24 @@
                 <ul class="nav navbar-nav mr-auto">
                     <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })</li>
                     <li class="nav-item">@Html.ActionLink("Products", "Index", "ProductManager", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Categories", "Index", "ProductCategoryManager", null, new { @class = "nav-link" })</li>
                     <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })</li>
+                    
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </nav>
-    
+
     <div class="container body-content">
         @RenderBody()
-        <!-- Start Footer  -->
+        <hr />
         <footer>
-            <div class="footer-main">
-                <div class="container bg-light" style="padding: 20px;">
-                    <div class="row">
-                        <div class="col-lg-4 col-md-12 col-sm-12">
-                            <div class="footer-link-contact">
-                                <h4>Address</h4>
-                                <ul>
-                                    <li>
-                                        <p><i class="fas fa-map-marker-alt"></i> Sveavägen 44 <br>172 85 Stockholm<br> Sweden </p>
-                                    </li>
-                                    <li>
-                                        <p><i class="fas fa-phone-square"></i>Phone: <a href="tel:+46(0)76 722 63 36">+46(0)76 722 63 36</a></p>
-                                    </li>
-                                    <li>
-                                        <p><i class="fas fa-envelope"></i>Email: <a href="info@shoptastic.se">info@shoptastic.se</a></p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <hr />
-
             <p>&copy; @DateTime.Now.Year - ShopTastic</p>
-
         </footer>
     </div>
+
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

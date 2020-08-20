@@ -98,12 +98,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ShopTastic.WebUI\ShopTastic.WebUI.csproj">
-      <Project>{E6D4EB2C-EDB6-47A1-A937-302E73227EBA}</Project>
-      <Name>ShopTastic.WebUI</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
