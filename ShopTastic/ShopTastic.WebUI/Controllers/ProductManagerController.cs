@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ShopTastic.Core.Contracts;
 using ShopTastic.Core.Models;
 using ShopTastic.Core.ViewModels;
 using ShopTastic.DataAccess.InMemory;
@@ -12,12 +13,12 @@ namespace ShopTastic.WebUI.Controllers
     public class ProductManagerController : Controller
     {
         // GET: ProductManager
-        ProductRepository context;
-        ProductCategoryRepository productCategories;
-        public ProductManagerController()
+        IRepository<Product> context;
+       IRepository<ProductCategory> productCategories;
+        public ProductManagerController(IRepository<Product> productContext, IRepository<ProductCategory> productCategoryContext)
         {
-            context = new ProductRepository();
-            productCategories = new ProductCategoryRepository();
+            context = productContext;
+            productCategories = productCategoryContext;
         }
         
         public ActionResult Index()
