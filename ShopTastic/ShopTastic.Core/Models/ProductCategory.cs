@@ -10,6 +10,7 @@ namespace ShopTastic.Core.Models
     { 
        
         public string Category { get; set; }
+        public string Size { get; set; }
 
         
     }
