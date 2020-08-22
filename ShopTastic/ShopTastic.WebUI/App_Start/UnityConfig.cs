@@ -1,9 +1,13 @@
 using System;
 using Unity;
-using ShopTastic.Core.Contracts;
 using ShopTastic.Core.Models;
 using ShopTastic.DataAccess.InMemory;
 using ShopTastic.DataAccess.SQL;
+using ShopTastic.WebUI.Controllers;
+using Unity.Injection;
+using ShopTastic.Services;
+using ShopTastic.Core.Contracts;
+using MyShop.Core.Contracts;
 
 namespace ShopTastic.WebUI
 {
@@ -47,6 +51,10 @@ namespace ShopTastic.WebUI
             // container.RegisterType<IProductRepository, ProductRepository>();
             container.RegisterType<IRepository<Product>, SQLRepository<Product>>();
             container.RegisterType<IRepository<ProductCategory>, SQLRepository<ProductCategory>>();
+            container.RegisterType<AccountController>(new InjectionConstructor());
+            container.RegisterType<IRepository<Basket>, SQLRepository<Basket>>();
+            container.RegisterType<IRepository<BasketItem>, SQLRepository<BasketItem>>();
+            container.RegisterType<IBasketService, BasketService>();
         }
     }
 }
