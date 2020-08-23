@@ -36,5 +36,6 @@ namespace ShopTastic.WebUI.Controllers
 
             return PartialView(basketSummary);
         }
+       
     }
 }
