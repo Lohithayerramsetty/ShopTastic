@@ -1,2 +1,3 @@
 # ShopTastic
-OnlineClothingStore - starting git with this project
+OnlineClothingStore
+This is my branch
