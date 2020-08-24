@@ -62,7 +62,7 @@ namespace ShopTastic.WebUI.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "How to reach us";
 
             return View();
         }
