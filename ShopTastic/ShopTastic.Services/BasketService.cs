@@ -1,4 +1,4 @@
-﻿using MyShop.Core.Contracts;
+﻿
 using ShopTastic.Core.Contracts;
 using ShopTastic.Core.Models;
 using ShopTastic.Core.ViewModels;
@@ -145,5 +145,13 @@ namespace ShopTastic.Services
                 return model;
             }
         }
+        public void ClearBasket(HttpContextBase httpContext)
+        {
+            Basket basket = GetBasket(httpContext, false);
+            basket.BasketItems.Clear();
+            basketContext.Commit();
+        }
+
+        
     }
 }

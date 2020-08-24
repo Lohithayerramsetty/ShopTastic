@@ -7,7 +7,13 @@ using ShopTastic.WebUI.Controllers;
 using Unity.Injection;
 using ShopTastic.Services;
 using ShopTastic.Core.Contracts;
-using MyShop.Core.Contracts;
+using Microsoft.AspNet.Identity;
+using System.Data.Entity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Owin.Security;
+using System.Web;
+
+
 
 namespace ShopTastic.WebUI
 {
@@ -51,10 +57,24 @@ namespace ShopTastic.WebUI
             // container.RegisterType<IProductRepository, ProductRepository>();
             container.RegisterType<IRepository<Product>, SQLRepository<Product>>();
             container.RegisterType<IRepository<ProductCategory>, SQLRepository<ProductCategory>>();
-            container.RegisterType<AccountController>(new InjectionConstructor());
             container.RegisterType<IRepository<Basket>, SQLRepository<Basket>>();
             container.RegisterType<IRepository<BasketItem>, SQLRepository<BasketItem>>();
+            container.RegisterType<IRepository<Customer>, SQLRepository<Customer>>();
+            container.RegisterType<IRepository<Order>, SQLRepository<Order>>();
             container.RegisterType<IBasketService, BasketService>();
+            container.RegisterType<IOrderService, OrderService>();
+
+            //container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>();
+            //container.RegisterType<UserManager<ApplicationUser>>();
+            //container.RegisterType<DbContext, ApplicationDbContext>();
+            //container.RegisterType<ApplicationUserManager>();
+            //container.RegisterType<AccountController>(new InjectionConstructor());
+
+            //container.RegisterType<IAuthenticationManager>(
+            //new InjectionFactory(
+            //    o => System.Web.HttpContext.Current.GetOwinContext().Authentication
+            //)
+            //);
         }
     }
 }
