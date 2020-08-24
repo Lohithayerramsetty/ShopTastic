@@ -5,7 +5,6 @@ using System.Text;
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ShopTastic.WebUI;
-using ShopTastic.WebUI.Controllers;
 
 namespace ShopTastic.WebUI.Tests.Controllers
 {
