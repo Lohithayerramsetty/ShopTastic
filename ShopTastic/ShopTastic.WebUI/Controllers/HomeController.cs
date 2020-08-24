@@ -62,7 +62,7 @@ namespace ShopTastic.WebUI.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "How to reach us";
+            ViewBag.Message = "Please provide your email and a brief message. We will be in contact with you within 1 business day.";
 
             return View();
         }
