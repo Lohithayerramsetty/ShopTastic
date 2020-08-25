@@ -1,7 +1,5 @@
 ﻿using MyShop.Core.Contracts;
 using ShopTastic.Core.Contracts;
-using ShopTastic.Core.Models;
-using ShopTastic.Core.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +17,8 @@ namespace ShopTastic.WebUI.Controllers
             context = checkOutContext;
             this.basketService = BasketService;
         }
+
+
         // GET: CheckOut
         public ActionResult Index()
         {
@@ -33,6 +33,7 @@ namespace ShopTastic.WebUI.Controllers
 
             return View(viewModel);
         }
+
         [HttpPost]
         public ActionResult Create(CheckOutPage checkOutPage)
         {
@@ -48,5 +49,6 @@ namespace ShopTastic.WebUI.Controllers
 
             }
         }
+
     }
 }

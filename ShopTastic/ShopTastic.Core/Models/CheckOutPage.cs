@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ShopTastic.Core.Models
 {
-    public class CheckOutPage : BaseEntity
+    class CheckOutPage:BaseEntity
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
