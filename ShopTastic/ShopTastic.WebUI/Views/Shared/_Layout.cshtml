@@ -20,14 +20,12 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav mr-auto">
 
-                    @if (User.IsInRole("Admin"))
+                    @if (Request.IsAuthenticated)
                     {
                         <li class="nav-item">@Html.ActionLink("Products", "Index", "ProductManager", null, new { @class = "nav-link" })</li>
                         <li class="nav-item">@Html.ActionLink("Categories", "Index", "ProductCategoryManager", null, new { @class = "nav-link" })</li>
-                        <li class="nav-item">@Html.ActionLink("Roles", "Index", "Admin", null, new { @class = "nav-link" })</li>
                     }
                     <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("Products", "Index", "Products", null, new { @class = "nav-link" })</li>
                     <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })</li>
 
                 </ul>

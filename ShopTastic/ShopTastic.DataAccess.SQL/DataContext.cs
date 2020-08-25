@@ -20,7 +20,6 @@ namespace ShopTastic.DataAccess.SQL
         public DbSet<Basket> Baskets { get; set; }
         public DbSet<BasketItem> BasketItems { get; set; }
         public DbSet<Customer> Customers { get; set; }
-        //Add those models to Entity Framework... And when you done with that add a new migration...
         public DbSet<Order> Orders { get; set; }
     }
 }
