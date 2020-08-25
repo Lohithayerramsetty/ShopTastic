@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ShopTastic.Core.Contracts;
 using ShopTastic.Core.Models;
 using ShopTastic.Core.ViewModels;
 using ShopTastic.DataAccess.InMemory;
@@ -12,12 +14,12 @@ namespace ShopTastic.WebUI.Controllers
     public class ProductManagerController : Controller
     {
         // GET: ProductManager
-        ProductRepository context;
-        ProductCategoryRepository productCategories;
-        public ProductManagerController()
+        IRepository<Product> context;
+       IRepository<ProductCategory> productCategories;
+        public ProductManagerController(IRepository<Product> productContext, IRepository<ProductCategory> productCategoryContext)
         {
-            context = new ProductRepository();
-            productCategories = new ProductCategoryRepository();
+            context = productContext;
+            productCategories = productCategoryContext;
         }
         
         public ActionResult Index()
@@ -34,7 +36,9 @@ namespace ShopTastic.WebUI.Controllers
             return View(viewModel);
         }
         [HttpPost]
-        public ActionResult Create(Product product)
+
+
+        public ActionResult Create(Product product, HttpPostedFileBase file)
         {
             if(!ModelState.IsValid)
             {
@@ -42,6 +46,11 @@ namespace ShopTastic.WebUI.Controllers
             }
             else
             {
+                if (file != null)
+                {
+                    product.Image = product.Id + Path.GetExtension(file.FileName);
+                    file.SaveAs(Server.MapPath("//Content//ProductImages//") + product.Image);
+                }
                 context.Insert(product);
                 context.Commit();
                 return RedirectToAction("Index");
@@ -63,7 +72,7 @@ namespace ShopTastic.WebUI.Controllers
             }
         }
         [HttpPost]
-        public ActionResult Edit(Product product, string Id)
+        public ActionResult Edit(Product product, string Id, HttpPostedFileBase file)
         {
             Product productToEdit = context.Find(Id);
             if (productToEdit == null)
@@ -76,9 +85,15 @@ namespace ShopTastic.WebUI.Controllers
                 {
                     return View(product);
                 }
+                if (file != null)
+                {
+                    productToEdit.Image = productToEdit.Id + Path.GetExtension(file.FileName);
+                    file.SaveAs(Server.MapPath("//Content//ProductImages//") + productToEdit.Image);
+                }
+
                 productToEdit.Category = product.Category;
                 productToEdit.Description = product.Description;
-                productToEdit.Image = product.Image;
+                
                 productToEdit.Name = product.Name;
                 productToEdit.Price = product.Price;
                 context.Commit();
