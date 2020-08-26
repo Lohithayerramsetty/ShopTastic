@@ -11,7 +11,7 @@ using ShopTastic.DataAccess.InMemory;
 
 namespace ShopTastic.WebUI.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class ProductManagerController : Controller
     {
         // GET: ProductManager
