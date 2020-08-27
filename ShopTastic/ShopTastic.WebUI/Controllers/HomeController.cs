@@ -68,7 +68,7 @@ namespace ShopTastic.WebUI.Controllers
         }
         public ActionResult Help()
         {
-            ViewBag.Message = "This is the help page.";
+            ViewBag.Message = " ";
             return View();
         }
     }
