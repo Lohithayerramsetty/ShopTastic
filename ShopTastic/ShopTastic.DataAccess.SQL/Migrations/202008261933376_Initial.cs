@@ -3,7 +3,7 @@ namespace ShopTastic.DataAccess.SQL.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class intital : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
