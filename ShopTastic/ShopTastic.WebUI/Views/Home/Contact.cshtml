@@ -11,7 +11,7 @@
 
 <body>
     <div class="contact-box-main">
-        <div class="container">
+        <div class="container bg-light">
             <div class="row">
                 <div class="col-lg-8 col-sm-12">
                     <div class="contact-form-right">
@@ -41,7 +41,7 @@
                                         <textarea class="form-control" id="message" placeholder="Your Message" rows="4" data-error="Write your message" required></textarea>
                                         <div class="help-block with-errors"></div>
                                     </div>
-                                    <div class="submit-button text-center">
+                                    <div class="submit-button text-left bg-light">
                                         <button class="btn hvr-hover" id="submit" type="submit">Send Message</button>
                                         <div id="msgSubmit" class="h3 text-center hidden"></div>
                                         <div class="clearfix"></div>
@@ -72,6 +72,12 @@
     </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-   
+
+<script>
+    $(".btn").click(function(){
+    alert("Thanks for your message");
+    });
+
+</script>
 </body>
 </html>
