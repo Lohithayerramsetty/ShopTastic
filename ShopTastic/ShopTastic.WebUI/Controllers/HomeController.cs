@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ShopTastic.DataAccess.SQL;
 
 namespace ShopTastic.WebUI.Controllers
 {
@@ -20,25 +21,39 @@ namespace ShopTastic.WebUI.Controllers
             productCategories = productCategoryContext;
         }
 
-        public ActionResult Index( string Category =null)
+
+        public ActionResult Index(string searchString)
         {
-            List<Product> products;
-            List<ProductCategory> categories = productCategories.Collection().ToList();
 
-            if( Category == null)
-            {
-                products = context.Collection().ToList();
-            }
-            else
-            {
-                products = context.Collection().Where(p => p.Category == Category).ToList();
-            }
-            ProductListViewModel model = new ProductListViewModel();
-            model.Products = products;
-            model.ProductsCategories = categories;
 
-            return View(model);
+            var products = from p in context.Collection()
+                           select p;
+
+
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                products = products.Where(s => s.Category.Contains(searchString));
+            }
+
+
+
+            return View(products.ToList());
+            //List<Product> products = context.Collection().ToList();
+
+            //return View();
         }
+            
+                     
+         public  ActionResult FilterProduct(string category)
+
+            {
+                DataContext productContext = new DataContext();
+                List<Product> filteredProduct = productContext.Products.Where(p => p.Category == category).ToList();
+
+                return View(filteredProduct);
+            }
+        
 
         public ActionResult Details(string Id)
         {

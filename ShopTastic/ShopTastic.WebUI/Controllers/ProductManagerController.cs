@@ -8,6 +8,7 @@ using ShopTastic.Core.Contracts;
 using ShopTastic.Core.Models;
 using ShopTastic.Core.ViewModels;
 using ShopTastic.DataAccess.InMemory;
+using ShopTastic.DataAccess.SQL;
 
 namespace ShopTastic.WebUI.Controllers
 {
@@ -21,12 +22,20 @@ namespace ShopTastic.WebUI.Controllers
         {
             context = productContext;
             productCategories = productCategoryContext;
-        }
+        }   
         
         public ActionResult Index()
         {
             List<Product> products = context.Collection().ToList();
+            //List<Product> products = context.Collection().ToList();
             return View(products);
+        }
+
+        public ActionResult FilterProduct(string category)
+        {
+            DataContext productContext = new DataContext();
+            List<Product> filteredProduct = productContext.Products.Where(p => p.Category == category).ToList();
+            return View(filteredProduct);
         }
         public ActionResult Create()
         {
@@ -114,11 +123,11 @@ namespace ShopTastic.WebUI.Controllers
             }
         }
         [HttpPost]
-        [ActionName ("Delete")]
+        [ActionName("Delete")]
         public ActionResult ConfirmDelete(string Id)
         {
             Product productToDelete = context.Find(Id);
-            if(productToDelete == null)
+            if (productToDelete == null)
             {
                 return HttpNotFound();
             }
