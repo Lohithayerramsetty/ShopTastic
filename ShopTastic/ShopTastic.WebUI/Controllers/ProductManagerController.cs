@@ -113,7 +113,7 @@ namespace ShopTastic.WebUI.Controllers
         public ActionResult Delete(string Id)
         {
             Product productToDelete = context.Find(Id);
-            if(productToDelete == null)
+            if (productToDelete == null)
             {
                 return HttpNotFound();
             }
