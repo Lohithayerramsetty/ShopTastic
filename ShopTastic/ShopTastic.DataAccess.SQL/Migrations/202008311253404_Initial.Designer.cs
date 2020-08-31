@@ -13,7 +13,7 @@ namespace ShopTastic.DataAccess.SQL.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202008261933376_Initial"; }
+            get { return "202008311253404_Initial"; }
         }
         
         string IMigrationMetadata.Source
