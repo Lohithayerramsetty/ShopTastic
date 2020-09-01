@@ -5,16 +5,17 @@
 
 <h1>Products</h1>
 
-<div class="col-md-2">
+<div class=" nav navbar list-group active">
+    <ul class=" nav navbar list-inline mx-auto justify-content-center list-group list-group-horizontal" >
+       @Html.ActionLink("All", "Index", null, new { @class = Request["Category"] == null ? "list-group-item active" : "list-gropu-item" })
 
-    <div class="list-group">
-        @Html.ActionLink("All","Index", null, new { @class = Request["Category"] == null ? "list-group-item active":"list-group-item"})
-       
-        @foreach(var cat in Model.ProductsCategories)
-        {
-            @Html.ActionLink(cat.Category, "Index", new { Category=cat.Category}, new {@new = Request["Category"]== cat.Category ? "list-group-item active": "list-group-item" })
-        }
-    </div>
+            @foreach (var cat in Model.ProductsCategories)
+                {
+                  @Html.ActionLink(cat.Category, "Index", new { Category = cat.Category },
+                  new { @new = Request["Category"] == cat.Category ? " list-group-item active" : "list-group-item active" })
+                 }
+    </ul>
+
 </div>
 
 <div class="col-md-10">
