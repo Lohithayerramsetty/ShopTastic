@@ -5,15 +5,24 @@
 
 <h1>Products</h1>
 
-<div class="col-md-10
+<div class="col-md-2">
 
-    <div class="nav-item">
-        @Html.ActionLink("All","Index", null, new { @class = Request["Category"] == null ? "list-group-item active":"list-group-item"})
-        @foreach(var cat in Model.ProductsCategories)
-        {
-            @Html.ActionLink(cat.Category, "Index", new { Category=cat.Category}, new {@new = Request["Category"]== cat.Category ? "list-group-item active": "list-group-item" })
-        }
-    </div>
+    
+    <div class="badge badge-dark">
+
+        <h3>
+            @Html.ActionLink("All", "Index", null, new { @class = Request["Category"] == null ? "badge badge-secondary active" : "badge badge-secondary" })
+
+            @foreach (var cat in Model.ProductsCategories)
+            {
+                <span>
+                    &nbsp;&nbsp;&nbsp;
+                    @Html.ActionLink(cat.Category, "Index", new { Category = cat.Category }, new { @new = Request["Category"] == cat.Category ? "badge badge-secondary" : "badge badge-secondary" })
+                </span>
+            }
+        </h3>
+        </div>
+    
 </div>
 <div class="col-md-10">
     
