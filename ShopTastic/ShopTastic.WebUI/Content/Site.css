@@ -35,3 +35,6 @@ footer {
     height: 10px;
     width: 75%;
 }
+ .ul{
+     display: inline;
+ }
